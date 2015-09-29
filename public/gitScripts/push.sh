@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/SkyNewsExercise/
+cd ~/sky-news-exercise/
 
 echo $1
 
@@ -8,6 +8,6 @@ git add -A
 
 git commit -m $1
 
-git pull --rebase
+git pull
 
 git push origin master -f

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd ~/SkyNewsExercise/
+cd ~/sky-news-exercise/
 
-git pull --rebase
+git pull

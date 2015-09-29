@@ -2,16 +2,16 @@
 
 cd ~
 
-if [ ! -d ./SkyNewsExercise ]
+if [ ! -d ./sky-news-exercise ]
 
 then
 
-    git clone https://github.com/JBH92/SkyNewsExercise.git
+    git clone https://github.com/JBH92/sky-news-exercise.git
 
     echo "Repository successfully cloned"
 
 else
 
-    echo "SkyNewsExercise folder is already present in home directory"
+    echo "sky-news-exercise folder is already present in home directory"
 
 fi
