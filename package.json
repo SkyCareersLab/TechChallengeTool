@@ -1,0 +1,8 @@
+{
+  "name": "careerslab",
+  "version": "1.0.0",
+  "dependencies": {
+      "path":"*",
+      "express":"*"
+  }
+}
