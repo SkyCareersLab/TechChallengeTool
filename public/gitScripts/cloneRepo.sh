@@ -11,3 +11,5 @@ then
 fi
 
 open -a "Safari" ~/sky-news-exercise/web/webpages/index.html
+
+atom ~/sky-news-exercise/web/

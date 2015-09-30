@@ -85,14 +85,15 @@ var DeveloperPage = React.createClass({
     			<h3>When you've finished a piece of work, and are ready to send it to the server:</h3>
     			<p>Describe what you've done in a short message i.e. "Created a really cool new page"
     			and press the button!</p>
-    			<br />
 				<input type="text" className="form-control" ref="message" placeholder="Describe the changes you've made..." />
                 <br />
 				<button className="btn btn-primary btn-lg" onClick={this.commitChanges}>Add to the Codebase!</button>
+
+                <h3>To get the latest version of the website commited by your team click below!</h3>
+                <p>Make sure that you get the latest version of the website before you start <b>each </b>
+                    new task or your changes may conflict with your team members changes!</p>
                 <button className="btn btn-danger pull-right" onClick={this.navigateToPage.bind(null,'developer',null)}>Back</button>
-                <br/>
-                <br/>
-                <button className="btn btn-success btn-lg" onClick={this.pullChanges}>Pull latest changes</button>
+                <button className="btn btn-success btn-lg" onClick={this.pullChanges}>Get latest changes</button>
             </div>
         );
     }
