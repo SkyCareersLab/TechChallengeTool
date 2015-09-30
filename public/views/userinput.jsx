@@ -16,24 +16,27 @@ var UserInputPage = React.createClass({
     },
     downloadExercise: function() {
         var comp = this;
-        $.ajax({
-            url: "/download",
-            type: 'GET',
-            success: function(downloaded) {
-                if(downloaded == 'true'){
-                    console.log('SkyNewsExercise was successfully downloaded');
-                    var user = comp.getUsername();
-                    if(user){
-                        comp.navigateToPage('developer', user);
+
+        if(comp.getUsername()){
+            $.ajax({
+                url: "/download",
+                type: 'GET',
+                success: function(response) {
+                    if(response == 'success'){
+                        console.log('sky-news-exercise was successfully downloaded');
+                        var user = comp.getUsername();
+                        if(user){
+                            comp.navigateToPage('developer', user);
+                        }
+                    } else {
+                        alert('Error: sky-news-exercise was unable to download');
                     }
-                } else {
-                    alert('Error: SkyNewsExercise was unable to download');
+                },
+                error: function(err) {
+                    console.log('Error: ' + err);
                 }
-            },
-            error: function(err) {
-                console.log('Error: ' + err);
-            }
-        });
+            });
+        }
     },
     render: function() {
         return(

@@ -21,8 +21,9 @@ var DeveloperPage = React.createClass({
         $.ajax({
             url: "/repo",
             type: 'GET',
-            success: function(successful) {
-                if(successful){
+            success: function(response) {
+                console.log(response);
+                if(response == 'success'){
                     comp.setAlertBar("alert alert-success", "You now have the latest version of the website!");
                 } else {
                     comp.setAlertBar("alert alert-danger", "An error occured, you may have uncommitted changes!");
@@ -44,9 +45,9 @@ var DeveloperPage = React.createClass({
                 type: 'POST',
                 contentType: "application/json",
                 data: JSON.stringify({ "message": fullMessage }),
-                dataType: 'json',
-                success: function(successful) {
-                    if(successful){
+                success: function(response) {
+                    console.log(response);
+                    if(response == 'success'){
                         comp.setAlertBar("alert alert-success", "Your changes have been successfully committed! " + message);
                         comp.refs.message.getDOMNode().value = '';
                     } else {

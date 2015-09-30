@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/download', function (req, res) {
-    var response;
+    var response = 'false';
     exec('./public/gitScripts/cloneRepo.sh', function(error) {
         if (error !== null) {
             console.log('exec error: ' + error);
@@ -26,7 +26,7 @@ app.get('/download', function (req, res) {
 });
 
 app.get('/repo', function (req, res) {
-    var response;
+    var response = 'false';
     exec('./public/gitScripts/pull.sh', function(error) {
         if (error !== null) {
             console.log('exec error: ' + error);
@@ -38,10 +38,9 @@ app.get('/repo', function (req, res) {
 });
 
 app.post('/repo', function (req, res) {
-    var response;
-    console.log(req.body.fullMessage);
+    var response = 'false';
 
-    exec('./public/gitScripts/push.sh ' + req.body.fullMessage ,function(error) {
+    exec('./public/gitScripts/push.sh ' + req.body.message ,function(error) {
         if (error !== null) {
             console.log('exec error: ' + error);
         } else {
