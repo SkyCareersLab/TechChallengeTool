@@ -2,11 +2,9 @@
 
 cd ~/sky-news-exercise/
 
-echo $1
+git add web/*
 
-git add -A
-
-git commit -m $1
+git commit -m "$1"
 
 git pull
 

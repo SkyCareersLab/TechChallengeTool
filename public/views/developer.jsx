@@ -2,12 +2,19 @@
 var DeveloperPage = React.createClass({
     getInitialState: function () {
         return {
-        alertMessage: ''
+        alertMessage: null,
+        alertType: null
       };
+    },
+    setAlertBar: function (alertType, message) {
+        this.setState({
+            alertMessage : message,
+            alertType : alertType
+        });
     },
     commitChanges: function(){
         var comp = this;
-        var message = this.props.user + ": " + this.refs.message.getDOMNode().value.trim();
+        var message = this.props.user + ":" + this.refs.message.getDOMNode().value;
 
         if(confirm("Are you sure")){
             $.ajax({
@@ -17,7 +24,12 @@ var DeveloperPage = React.createClass({
                 data: JSON.stringify({ "message": message }),
                 dataType: 'json',
                 success: function(successful) {
-                    console.log(successful);
+                    if(successful){
+                        comp.setAlertBar("alert alert-success", "Your changes have been successfully committed! " + message);
+                        comp.refs.message.getDOMNode().value = '';
+                    } else {
+                        comp.setAlertBar("alert alert-danger", "An error occured, your changes were not committed!" + message);
+                    }
                 },
                 error: function(err) {
                     console.log(err);
@@ -26,11 +38,16 @@ var DeveloperPage = React.createClass({
         }
     },
     render: function(){
-        var alertBar = (
-            <div className="alert alert-success">
-                {this.state.alertMessage}
-            </div>
-        );
+        var alertBar;
+        if(this.state.alertMessage && this.state.alertType){
+            alertBar = (
+                <div className={this.state.alertType}>
+                    {this.state.alertMessage}
+                </div>
+            );
+        } else {
+            alertBar = <div></div>;
+        }
 
         return(
             <div>
@@ -57,7 +74,6 @@ var ModalWindow = React.createClass({
         return(
         <div id="myModal" className="modal fade" role="dialog">
           <div className="modal-dialog">
-            //Modal content
             <div className="modal-content">
               <div className="modal-header">
                 <button type="button" className="close" data-dismiss="modal">&times;</button>
