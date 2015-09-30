@@ -14,40 +14,40 @@ app.get('/', function (req, res) {
 });
 
 app.get('/download', function (req, res) {
-    var success = 'false';
+    var response;
     exec('./public/gitScripts/cloneRepo.sh', function(error) {
         if (error !== null) {
             console.log('exec error: ' + error);
         } else {
-            success = 'true';
+            response = 'success';
         }
-        res.end(success);
+        res.end(response);
     });
 });
 
 app.get('/repo', function (req, res) {
-    var success = 'false';
+    var response;
     exec('./public/gitScripts/pull.sh', function(error) {
         if (error !== null) {
             console.log('exec error: ' + error);
         } else {
-            success = 'true';
+            response = 'success';
         }
-        res.end(success);
+        res.end(response);
     });
 });
 
 app.post('/repo', function (req, res) {
-    var success = 'false';
-    console.log(req.body.message);
+    var response;
+    console.log(req.body.fullMessage);
 
-    exec('./public/gitScripts/push.sh ' + req.body.message ,function(error) {
+    exec('./public/gitScripts/push.sh ' + req.body.fullMessage ,function(error) {
         if (error !== null) {
             console.log('exec error: ' + error);
         } else {
-            success = 'true';
+            response = 'success';
         }
-        res.end(success);
+        res.end(response);
     });
 });
 
