@@ -6,35 +6,59 @@ var DeveloperPage = React.createClass({
         alertType: null
       };
     },
+    navigateToPage: function(page,user){
+        this.props.appStateLink(page, user);
+    },
     setAlertBar: function (alertType, message) {
         this.setState({
             alertMessage : message,
             alertType : alertType
         });
     },
+    pullChanges: function(){
+        var comp = this;
+
+        $.ajax({
+            url: "/repo",
+            type: 'GET',
+            success: function(successful) {
+                if(successful){
+                    comp.setAlertBar("alert alert-success", "You now have the latest version of the website!");
+                } else {
+                    comp.setAlertBar("alert alert-danger", "An error occured, you may have uncommitted changes!");
+                }
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    },
     commitChanges: function(){
         var comp = this;
-        var message = this.props.user + ":" + this.refs.message.getDOMNode().value;
+        var message = this.refs.message.getDOMNode().value;
+        var fullMessage = this.props.user + ":" + message;
 
-        if(confirm("Are you sure")){
+        if(message && confirm("Are you sure")){
             $.ajax({
                 url: "/repo",
                 type: 'POST',
                 contentType: "application/json",
-                data: JSON.stringify({ "message": message }),
+                data: JSON.stringify({ "message": fullMessage }),
                 dataType: 'json',
                 success: function(successful) {
                     if(successful){
                         comp.setAlertBar("alert alert-success", "Your changes have been successfully committed! " + message);
                         comp.refs.message.getDOMNode().value = '';
                     } else {
-                        comp.setAlertBar("alert alert-danger", "An error occured, your changes were not committed!" + message);
+                        comp.setAlertBar("alert alert-danger", "An error occurred! (Did you actually make any changes?)");
                     }
                 },
                 error: function(err) {
                     console.log(err);
                 }
             });
+        } else {
+            this.setAlertBar("alert alert-info", "Please enter a commit message");
         }
     },
     render: function(){
@@ -64,6 +88,10 @@ var DeveloperPage = React.createClass({
 				<input type="text" className="form-control" ref="message" placeholder="Describe the changes you've made..." />
                 <br />
 				<button className="btn btn-primary btn-lg" onClick={this.commitChanges}>Add to the Codebase!</button>
+                <button className="btn btn-danger pull-right" onClick={this.navigateToPage.bind(null,'developer',null)}>Back</button>
+                <br/>
+                <br/>
+                <button className="btn btn-success btn-lg" onClick={this.pullChanges}>Pull latest changes</button>
             </div>
         );
     }
@@ -84,7 +112,7 @@ var ModalWindow = React.createClass({
                     <img src="images/finder-icon.png" height="100" width="100"></img>
                 </div>
                 <br />
-                <h5>Find the folder named 'SkyNewsExercise', double click and find the folder named 'web':</h5>
+                <h5>Find the folder named 'sky-news-exercise', double click and find the folder named 'web':</h5>
                 <img src="images/folder-icon.jpg" height="100" width="100"></img>
                 <br />
                 <h5>Click and drag the whole folder to this icon at the bottom of the screen:</h5>

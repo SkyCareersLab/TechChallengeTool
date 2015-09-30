@@ -8,10 +8,6 @@ then
 
     git clone https://github.com/JBH92/sky-news-exercise.git
 
-    echo "Repository successfully cloned"
-
-else
-
-    echo "sky-news-exercise folder is already present in home directory"
-
 fi
+
+open -a "Safari" ~/sky-news-exercise/web/webpages/index.html

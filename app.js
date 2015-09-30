@@ -13,9 +13,21 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname , '/public/index.html'));
 });
 
+app.get('/download', function (req, res) {
+    var success = 'false';
+    exec('./public/gitScripts/cloneRepo.sh', function(error) {
+        if (error !== null) {
+            console.log('exec error: ' + error);
+        } else {
+            success = 'true';
+        }
+        res.end(success);
+    });
+});
+
 app.get('/repo', function (req, res) {
     var success = 'false';
-    exec('./public/gitScripts/cloneRepo.sh',function(error) {
+    exec('./public/gitScripts/pull.sh', function(error) {
         if (error !== null) {
             console.log('exec error: ' + error);
         } else {

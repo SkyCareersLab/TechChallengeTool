@@ -17,7 +17,7 @@ var UserInputPage = React.createClass({
     downloadExercise: function() {
         var comp = this;
         $.ajax({
-            url: "/repo",
+            url: "/download",
             type: 'GET',
             success: function(downloaded) {
                 if(downloaded == 'true'){
@@ -48,10 +48,8 @@ var UserInputPage = React.createClass({
 					<label>Second Team Mate's Username:</label>
 					<input type="text" className="form-control" ref="secondUser"/>
 				</div>
-				<button className="btn btn-primary" onClick={this.downloadExercise}>Download the Code!</button>
-                <br/>
-                <br/>
-                <button className="btn btn-danger" onClick={this.navigateToPage.bind(null,'home',null)}>Go Back to Home Page</button>
+				<button className="btn btn-primary" onClick={this.downloadExercise}>Submit!</button>
+                <button className="btn btn-danger pull-right" onClick={this.navigateToPage.bind(null,'home',null)}>Back</button>
             </div>
         );
     }
