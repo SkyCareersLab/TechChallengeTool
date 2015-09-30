@@ -1,0 +1,10 @@
+@font-face {
+  font-family: skyFont;
+  src: url('../fonts/Sky_Reg.ttf') format('truetype');
+}
+
+body{
+    padding:15px;
+    font-family: skyFont,'OpenSansRegular', "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
