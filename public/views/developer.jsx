@@ -82,7 +82,7 @@ var DeveloperPage = React.createClass({
                 {alertBar}
     			<h2>All your work and changes will be saved under this code name: <b>{this.props.user}</b></h2>
                 <br/>
-                <button type="button" ref="warmupModal" className="btn btn-warning btn-lg" data-toggle="modal" data-target="#warmupModal">Warmup task instructions</button>
+                <button type="button" ref="warmupModal" className="btn btn-warning btn-lg" data-toggle="modal" data-target="#warmupModal">Warm-up task instructions</button>
                 <h3>Start off by completing the warm-up exercise to get used to writing HTML code</h3>
                 <br/>
     			<button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#findCodeModal">Where's the code?</button>
@@ -144,10 +144,10 @@ var WarmupModal = React.createClass({
             <div className="modal-content">
               <div className="modal-header">
                 <button type="button" className="close" data-dismiss="modal">&times;</button>
-                <h4 className="modal-title">Warm Up</h4>
+                <h4 className="modal-title">Warm-up task</h4>
               </div>
               <div className="modal-body">
-                <h4>Try to complete the warm up tasks before starting on the main sky news site:</h4>
+                <h4>Try to complete the warm-up tasks before starting on the main sky news site:</h4>
                 <img src="images/atom-icon.png" height="100" width="100"></img>
                 <br />
                 <h4>Find the 'warm-up-exercise' folder in the sky-news-exercise
