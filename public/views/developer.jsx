@@ -6,6 +6,9 @@ var DeveloperPage = React.createClass({
         alertType: null
       };
     },
+    componentDidMount: function(){
+        this.refs.warmupModal.getDOMNode().click();
+    },
     navigateToPage: function(page,user){
         this.props.appStateLink(page, user);
     },
@@ -78,9 +81,13 @@ var DeveloperPage = React.createClass({
             <div>
                 {alertBar}
     			<h2>All your work and changes will be saved under this code name: <b>{this.props.user}</b></h2>
-
-    			<button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Where's the code?</button>
-                <ModalWindow />
+                <br/>
+                <button type="button" ref="warmupModal" className="btn btn-warning btn-lg" data-toggle="modal" data-target="#warmupModal">Warmup task instructions</button>
+                <h3>Start off by completing the warm-up exercise to get used to writing HTML code</h3>
+                <br/>
+    			<button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#findCodeModal">Where's the code?</button>
+                <FindCodeModal />
+                <WarmupModal />
 
     			<h3>When you've finished a piece of work, and are ready to send it to the server:</h3>
     			<p>Describe what you've done in a short message i.e. "Created a really cool new page"
@@ -99,10 +106,10 @@ var DeveloperPage = React.createClass({
     }
 });
 
-var ModalWindow = React.createClass({
+var FindCodeModal = React.createClass({
     render: function(){
         return(
-        <div id="myModal" className="modal fade" role="dialog">
+        <div id="findCodeModal" className="modal fade" role="dialog">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -110,15 +117,41 @@ var ModalWindow = React.createClass({
                 <h4 className="modal-title">Where's the code?</h4>
               </div>
               <div className="modal-body">
-                <div id="text-center"><h5>Open 'Finder' by clicking on this icon at the bottom of the screen:</h5>
-                    <img src="images/finder-icon.png" height="100" width="100"></img>
-                </div>
+                <h4>Open 'Finder' by clicking on this icon at the bottom of the screen:</h4>
+                <img src="images/finder-icon.png" height="100" width="100"></img>
                 <br />
-                <h5>Find the folder named 'sky-news-exercise', double click and find the folder named 'web':</h5>
+                <h4>Find the folder named 'sky-news-exercise', double click and find the folder named 'web':</h4>
                 <img src="images/folder-icon.jpg" height="100" width="100"></img>
                 <br />
-                <h5>Click and drag the whole folder to this icon at the bottom of the screen:</h5>
+                <h4>Click and drag the whole folder to this icon at the bottom of the screen:</h4>
                 <img src="images/atom-icon.png" height="100" width="100"></img>
+              </div>
+              <div className="modal-footer">
+                <button className="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+});
+
+var WarmupModal = React.createClass({
+    render: function(){
+        return(
+        <div id="warmupModal" className="modal fade" role="dialog">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                <h4 className="modal-title">Warm Up</h4>
+              </div>
+              <div className="modal-body">
+                <h4>Try to complete the warm up tasks before starting on the main sky news site:</h4>
+                <img src="images/atom-icon.png" height="100" width="100"></img>
+                <br />
+                <h4>Find the 'warm-up-exercise' folder in the sky-news-exercise
+                    project which is now open in Atom and read the 'instructions.txt' file to get started!</h4>
               </div>
               <div className="modal-footer">
                 <button className="btn btn-default" data-dismiss="modal">Close</button>
