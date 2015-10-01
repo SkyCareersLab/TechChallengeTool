@@ -11,10 +11,10 @@ var WarmupPage = React.createClass({
             <div>
                 <br />
                 <button type="button" ref="warmupModal" className="btn btn-warning btn-lg" data-toggle="modal" data-target="#warmupModal">Warm-up task instructions</button>
-                <h3>Start off by completing the warm-up exercise to get used to writing HTML code</h3>
+                <h3>Start off by completing the warm-up exercise to get used to writing HTML code.</h3>
+                <h4>When you are finished click next to start on the main exercise.</h4>
                 <br />
                 <WarmupModal />
-                <br />
                 <button className="btn btn-danger btn-lg" onClick={this.navigateToPage.bind(null,'home',null)}>Back</button>
                 <button className="btn btn-success btn-lg pull-right" onClick={this.navigateToPage.bind(null,'developer',null)}>next</button>
             </div>
