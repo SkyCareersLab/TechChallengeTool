@@ -16,7 +16,7 @@ var UserInputPage = React.createClass({
     render: function() {
         return(
             <div>
-                <h1>Ready? - Fill in your usernames and click download the code to start!</h1>
+                <h1>Ready? - Fill in your usernames and click submit!</h1>
     			<br />
 				<div className="form-group">
 					<label>First Team Mate's Username:</label>
