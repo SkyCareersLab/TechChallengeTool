@@ -16,6 +16,8 @@ var App = React.createClass({
 
         if(this.state.page == 'home'){
             Element = HomePage;
+        } else if(this.state.page == 'warmup' && !this.state.user){
+            Element = WarmupPage;
         } else if(this.state.page == 'developer' && !this.state.user){
             Element = UserInputPage;
         } else if(this.state.page == 'developer' && this.state.user){

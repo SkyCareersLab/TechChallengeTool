@@ -5,38 +5,13 @@ var UserInputPage = React.createClass({
         var user2 = this.refs.secondUser.getDOMNode().value.trim();
 
         if(user1 && user2){
-            return(user1 + user2);
+            this.navigateToPage('developer', user1 + user2);
         } else {
             alert('Please enter both of your usernames');
-            return(null);
         }
     },
     navigateToPage: function(page,user){
         this.props.appStateLink(page, user);
-    },
-    downloadExercise: function() {
-        var comp = this;
-
-        if(comp.getUsername()){
-            $.ajax({
-                url: "/download",
-                type: 'GET',
-                success: function(response) {
-                    if(response == 'success'){
-                        console.log('sky-news-exercise was successfully downloaded');
-                        var user = comp.getUsername();
-                        if(user){
-                            comp.navigateToPage('developer', user);
-                        }
-                    } else {
-                        alert('Error: sky-news-exercise was unable to download');
-                    }
-                },
-                error: function(err) {
-                    console.log('Error: ' + err);
-                }
-            });
-        }
     },
     render: function() {
         return(
@@ -51,8 +26,8 @@ var UserInputPage = React.createClass({
 					<label>Second Team Mate's Username:</label>
 					<input type="text" className="form-control" ref="secondUser"/>
 				</div>
-				<button className="btn btn-primary" onClick={this.downloadExercise}>Submit!</button>
-                <button className="btn btn-danger pull-right" onClick={this.navigateToPage.bind(null,'home',null)}>Back</button>
+				<button className="btn btn-primary pull-right" onClick={this.getUsername}>Submit!</button>
+                <button className="btn btn-danger btn-lg" onClick={this.navigateToPage.bind(null,'warmup',null)}>Back</button>
             </div>
         );
     }

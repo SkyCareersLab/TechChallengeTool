@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cd ~
 
 if [ ! -d ./sky-news-exercise ]
@@ -10,7 +12,6 @@ then
 
 fi
 
-open -a "Safari" ~/sky-news-exercise/web/webpages/index.html
-open -a "Safari" ~/sky-news-exercise/warm-up-exercise/webpages/taskPage.html
+open -a "Safari" ~/sky-news-exercise/warm-up-exercise/webpages/taskPage.html || echo "Unable to open task page in safari"
 
-atom ~/sky-news-exercise/
+atom ~/sky-news-exercise/ || echo "Unable to open project in atom (is atom installed?)"
