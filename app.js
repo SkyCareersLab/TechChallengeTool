@@ -54,4 +54,5 @@ app.post('/repo', function (req, res) {
 var server = app.listen(3001, function () {
     var port = server.address().port;
     console.log('listening on port:' + port);
+    console.log('Go to "localhost:3001" in your favourite browser!');
 });
