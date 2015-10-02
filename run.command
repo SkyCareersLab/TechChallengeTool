@@ -4,4 +4,4 @@ set -e
 
 cd ~/careersLabReact/
 
-node app.js || echo "Already running!!"
+open http://localhost:3001/ & node app.js
