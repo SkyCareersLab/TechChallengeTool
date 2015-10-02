@@ -8,6 +8,6 @@ git add web/*
 
 git commit -m "$1"
 
-git pull
+git pull || echo "Already up to date"
 
 git push origin master -f
