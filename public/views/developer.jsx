@@ -62,6 +62,27 @@ var DeveloperPage = React.createClass({
             this.setAlertBar("alert alert-info", "Please enter a commit message");
         }
     },
+    discardChanges: function(){
+        var comp = this;
+
+        if(confirm("Are you sure you want to discard your local changes")){
+            $.ajax({
+                url: "/discardChanges",
+                type: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    if(response == 'success'){
+                        comp.setAlertBar("alert alert-success", "Changes discarded, you now have the latest version of the website!");
+                    } else {
+                        comp.setAlertBar("alert alert-danger", "An error occured");
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    },
     render: function(){
         var alertBar;
         if(this.state.alertMessage && this.state.alertType){
@@ -92,8 +113,16 @@ var DeveloperPage = React.createClass({
                 <h3>To get the latest version of the website commited by your team click below!</h3>
                 <p>Make sure that you get the latest version of the website before you start <b>each </b>
                     new task or your changes may conflict with your team members changes!</p>
-                <button className="btn btn-danger btn-lg pull-right" onClick={this.navigateToPage.bind(null,'developer',null)}>Back</button>
                 <button className="btn btn-success btn-lg" onClick={this.pullChanges}>Get latest changes</button>
+
+                <h3>Discard local changes and revert!</h3>
+                <p>Discard your changes made since your last commit to the codebase, and revert to the latest version of the site!</p>
+                <button className="btn btn-warning btn-lg" onClick={this.discardChanges}>Revert changes</button>
+                <br />
+                <br />
+                <br />
+                <br />
+                <button className="btn btn-danger btn-lg" onClick={this.navigateToPage.bind(null,'developer',null)}>Back</button>
             </div>
         );
     }

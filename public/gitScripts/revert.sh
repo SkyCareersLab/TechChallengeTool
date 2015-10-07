@@ -1,5 +1,7 @@
 #!/bin/bash
 
-git fetch --all
+set -e
 
-git reset --hard origin/master
+cd ~/sky-news-exercise/
+
+git checkout -f

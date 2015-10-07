@@ -50,6 +50,18 @@ app.post('/repo', function (req, res) {
     });
 });
 
+app.get('/discardChanges', function (req, res) {
+    var response = 'false';
+    exec('./public/gitScripts/revert.sh', function(error) {
+        if (error !== null) {
+            console.log('exec error: ' + error);
+        } else {
+            response = 'success';
+        }
+        res.end(response);
+    });
+});
+
 
 var server = app.listen(3001, function () {
     var port = server.address().port;
