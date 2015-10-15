@@ -47,8 +47,7 @@ var App = React.createClass({
         return (<div>
                     <img src="images/sky_academy_logo.png" />
                     {team}
-                    <br/>
-                    <br/>
+                    <br/><br/><br/>
                     <Element appStateLink={appStateLink} user={this.state.user} team={this.state.team}/>
                 </div>);
     }
