@@ -23,7 +23,7 @@ var HomePage = React.createClass({
                 success: function(response) {
                     if(response == 'success'){
                         console.log('sky-news-exercise was successfully downloaded');
-                        comp.navigateToPage('warmup', null);
+                        comp.navigateToPage('warmup', null, comp.state.team);
                     } else {
                         alert('Error: sky-news-exercise was unable to download');
                     }
@@ -43,7 +43,7 @@ var HomePage = React.createClass({
     			<br />
                 <h3>Which team are you on?</h3>
                 <select className="form-control" ref="teamSelect" onChange={this.setTeam}>
-                    <option value="" selected="selected">Please select your team</option>
+                    <option value="">Please select your team</option>
                     <option value="A">Team A</option>
                     <option value="B">Team B</option>
                     <option value="C">Team C</option>

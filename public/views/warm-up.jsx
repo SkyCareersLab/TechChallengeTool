@@ -15,8 +15,7 @@ var WarmupPage = React.createClass({
                 <h4>When you are finished click next to start on the main exercise.</h4>
                 <br />
                 <WarmupModal />
-                <button className="btn btn-danger btn-lg" onClick={this.navigateToPage.bind(null,'home',null)}>Back</button>
-                <button className="btn btn-success btn-lg pull-right" onClick={this.navigateToPage.bind(null,'developer',null)}>next</button>
+                <button className="btn btn-success btn-lg center-block" onClick={this.navigateToPage.bind(null,'developer',null)}>next</button>
             </div>
         );
     }

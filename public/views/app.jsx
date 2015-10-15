@@ -28,9 +28,29 @@ var App = React.createClass({
             Element = DeveloperPage;
         }
 
-        return <Element appStateLink={appStateLink} user={this.state.user} team={this.state.team}/>;
-    }
+        var team;
+        switch(this.state.team){
+            case "A":
+                team = <div className="team-logo red pull-right">Team A</div>;
+                break;
+            case "B":
+                team = <div className="team-logo blue pull-right">Team B</div>;
+                break;
+            case "C":
+                team = <div className="team-logo green pull-right">Team C</div>;
+                break;
+            case "D":
+                team = <div className="team-logo yellow pull-right">Team D</div>;
+                break;
+        }
 
+        return (<div>
+                    <img src="images/sky_academy_logo.png" />
+                    {team}
+                    <br/>
+                    <Element appStateLink={appStateLink} user={this.state.user} team={this.state.team}/>
+                </div>);
+    }
 });
 
 React.render(<App/>, document.getElementById("content"));
