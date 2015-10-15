@@ -10,15 +10,16 @@ body{
 }
 
 .team-logo{
-    height: 60px;
+    height: 50px;
     width: 140px;
     text-align: center;
     font-family: skyFont,'OpenSansRegular', "Lucida Grande", Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: 25px;
-    padding: 10px 0;
+    margin-top: 10px;
+    padding: 5px 0;
     border: solid 2px #B3ACAC;
-    border-radius: 30px;
+    border-radius: 20px;
 }
 
 .red{
