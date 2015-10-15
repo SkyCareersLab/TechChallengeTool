@@ -4,13 +4,17 @@ var App = React.createClass({
     getInitialState: function () {
         return {
         page: 'home',
+        team: null,
         user: null
       };
     },
     render: function() {
         var comp = this;
-        var appStateLink = function(page, user) {
+        var appStateLink = function(page, user, team) {
             comp.setState({page: page, user: user});
+            if(team){
+                comp.setState({team: team});
+            }
         };
         var Element;
 
@@ -24,7 +28,7 @@ var App = React.createClass({
             Element = DeveloperPage;
         }
 
-        return <Element appStateLink={appStateLink} user={this.state.user}/>;
+        return <Element appStateLink={appStateLink} user={this.state.user} team={this.state.team}/>;
     }
 
 });

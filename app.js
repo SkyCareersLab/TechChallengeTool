@@ -15,7 +15,24 @@ app.get('/', function (req, res) {
 
 app.get('/download', function (req, res) {
     var response = 'false';
-    exec('./public/gitScripts/cloneRepo.sh', function(error) {
+    var repoUrl;
+
+    switch(req.query.team){
+        case "A":
+            repoUrl = "https://github.com/JBH92/sky-news-exercise.git";
+            break;
+        case "B":
+            repoUrl = "https://github.com/JBH92/sky-news-exercise.git";
+            break;
+        case "C":
+            repoUrl = "https://github.com/JBH92/sky-news-exercise.git";
+            break;
+        case "D":
+            repoUrl = "https://github.com/JBH92/sky-news-exercise.git";
+            break;
+    }
+
+    exec('./public/gitScripts/cloneRepo.sh ' + repoUrl, function(error) {
         if (error !== null) {
             console.log('exec error: ' + error);
         } else {

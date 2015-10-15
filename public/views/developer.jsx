@@ -98,6 +98,7 @@ var DeveloperPage = React.createClass({
         return(
             <div>
                 {alertBar}
+                <h2>TEAM {this.props.team}</h2>
     			<h2>All your work and changes will be saved under this code name: <b>{this.props.user}</b></h2>
                 <br/>
     			<button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#findCodeModal">Where's the code?</button>
