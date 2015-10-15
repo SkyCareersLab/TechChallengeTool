@@ -11,26 +11,32 @@ body{
 
 .team-logo{
     height: 60px;
-    width: 280px;
+    width: 140px;
     text-align: center;
     font-family: skyFont,'OpenSansRegular', "Lucida Grande", Helvetica, Arial, sans-serif;
     font-weight: bold;
-    font-size: 35px;
-    padding: 5px 0;
+    font-size: 25px;
+    padding: 10px 0;
+    border: solid 2px #B3ACAC;
+    border-radius: 30px;
 }
 
 .red{
     color: #ad0d0d;
+    background: rgba(255, 0, 0, 0.05);
 }
 
 .blue{
     color: #0a3da1;
+    background: rgba(0, 67, 255, 0.05);
 }
 
 .green{
     color: #128c16;
+    background: rgba(4, 255, 0, 0.05);
 }
 
 .yellow{
     color: #c9ad15;
+    background: rgba(251, 255, 0, 0.05);
 }
