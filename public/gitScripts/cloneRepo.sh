@@ -8,7 +8,7 @@ if [ ! -d ./sky-news-exercise ]
 
 then
 
-    git clone "$1"
+    git clone "$1" sky-news-exercise
 
 fi
 
