@@ -19,16 +19,16 @@ app.get('/download', function (req, res) {
 
     switch(req.query.team){
         case "A":
-            repoUrl = "https://github.com/SkyCareersLab/sky-news-exercise1.git";
+            repoUrl = "git@github.com:SkyCareersLab/sky-news-exercise1.git";
             break;
         case "B":
-            repoUrl = "https://github.com/SkyCareersLab/sky-news-exercise2.git";
+            repoUrl = "git@github.com:SkyCareersLab/sky-news-exercise2.git";
             break;
         case "C":
-            repoUrl = "https://github.com/SkyCareersLab/sky-news-exercise3.git";
+            repoUrl = "git@github.com:SkyCareersLab/sky-news-exercise3.git";
             break;
         case "D":
-            repoUrl = "https://github.com/SkyCareersLab/sky-news-exercise4.git";
+            repoUrl = "git@github.com:SkyCareersLab/sky-news-exercise4.git";
             break;
     }
 
