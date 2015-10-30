@@ -139,8 +139,8 @@ var FindCodeModal = React.createClass({
                 <h4 className="modal-title">Where's the code?</h4>
               </div>
               <div className="modal-body">
-                <h4>Open 'Finder' by clicking on this icon at the bottom of the screen:</h4>
-                <img src="images/finder-icon.png" height="100" width="100"></img>
+                <h4>Open 'skyacademy' folder by clicking on this icon at the bottom of the screen:</h4>
+                <img src="images/folder-location.png" height="100" width="250"></img>
                 <br />
                 <h4>Find the folder named 'sky-news-exercise', double click and find the folder named 'web':</h4>
                 <img src="images/folder-icon.jpg" height="100" width="100"></img>
