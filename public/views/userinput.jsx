@@ -2,7 +2,9 @@
 var UserInputPage = React.createClass({
     getUsername: function(){
         var user1 = this.refs.firstUser.getDOMNode().value.trim();
+        user1 = user1.replace(/[^a-z0-9\s]/gi, '');
         var user2 = this.refs.secondUser.getDOMNode().value.trim();
+        user2 = user2.replace(/[^a-z0-9\s]/gi, '');
 
         if(user1 && user2){
             this.navigateToPage('developer', user1 + user2);
