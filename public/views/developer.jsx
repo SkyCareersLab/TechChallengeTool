@@ -4,7 +4,10 @@ var DeveloperPage = React.createClass({
         return {
         alertMessage: null,
         alertType: null,
-        lastCommit: ''
+        lastCommit: '',
+        uploadButton: 'Upload changes!',
+        pullChangesButton: 'Get latest changes',
+        revertButton: 'Revert changes'
       };
     },
     navigateToPage: function(page,user){
@@ -18,6 +21,7 @@ var DeveloperPage = React.createClass({
     },
     pullChanges: function(){
         var comp = this;
+        this.setState({pullChangesButton : 'Loading...'});
 
         $.ajax({
             url: "/repo",
@@ -29,9 +33,11 @@ var DeveloperPage = React.createClass({
                 } else {
                     comp.setAlertBar("alert alert-danger", "An error occured, you may have uncommitted changes!");
                 }
+                comp.setState({pullChangesButton : 'Get latest changes'});
             },
             error: function(err) {
                 console.log(err);
+                comp.setState({pullChangesButton : 'Get latest changes'});
             }
         });
     },
@@ -41,6 +47,7 @@ var DeveloperPage = React.createClass({
         var fullMessage = this.props.user + ":" + message;
 
         if(message && confirm("Are you sure")){
+            this.setState({uploadButton : 'Loading...'});
             $.ajax({
                 url: "/repo",
                 type: 'POST',
@@ -55,9 +62,11 @@ var DeveloperPage = React.createClass({
                     } else {
                         comp.setAlertBar("alert alert-danger", "An error occurred! (Did you actually make any changes?)");
                     }
+                    comp.setState({uploadButton : 'Upload changes!'});
                 },
                 error: function(err) {
                     console.log(err);
+                    comp.setState({uploadButton : 'Upload changes!'});
                 }
             });
         } else {
@@ -68,6 +77,7 @@ var DeveloperPage = React.createClass({
         var comp = this;
 
         if(confirm("Are you sure you want to discard your local changes")){
+            this.setState({revertButton : 'Loading...'});
             $.ajax({
                 url: "/discardChanges",
                 type: 'GET',
@@ -78,9 +88,11 @@ var DeveloperPage = React.createClass({
                     } else {
                         comp.setAlertBar("alert alert-danger", "An error occured");
                     }
+                    comp.setState({revertButton : 'Revert changes'});
                 },
                 error: function(err) {
                     console.log(err);
+                    comp.setState({revertButton : 'Revert changes'});
                 }
             });
         }
@@ -110,17 +122,17 @@ var DeveloperPage = React.createClass({
           			and press the button!</p>
         				<input type="text" className="form-control" ref="message" placeholder="Describe the changes you've made..." />
                 <br />
-        				<button className="btn btn-primary btn-lg" onClick={this.commitChanges}>Upload changes!</button>
+        				<button className="btn btn-primary btn-lg" onClick={this.commitChanges}>{this.state.uploadButton}</button>
                 <div className="last-commit">Last Commit: {this.state.lastCommit}</div>
 
                 <h3>To get the latest version of the website commited by your team click below!</h3>
                 <p>Make sure that you get the latest version of the website before you start <b>each </b>
                     new task or your changes may conflict with your team members changes!</p>
-                <button className="btn btn-success btn-lg" onClick={this.pullChanges}>Get latest changes</button>
+                  <button className="btn btn-success btn-lg" onClick={this.pullChanges}>{this.state.pullChangesButton}</button>
 
                 <h3>Discard local changes and revert!</h3>
                 <p>Discard your changes made since your last commit to the codebase, and revert to the latest version of the site!</p>
-                <button className="btn btn-warning btn-lg" onClick={this.discardChanges}>Revert changes</button>
+                <button className="btn btn-warning btn-lg" onClick={this.discardChanges}>{this.state.revertButton}</button>
                 <br />
                 <br />
                 <br />
