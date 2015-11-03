@@ -123,7 +123,7 @@ var DeveloperPage = React.createClass({
         				<input type="text" className="form-control" ref="message" placeholder="Describe the changes you've made..." />
                 <br />
         				<button className="btn btn-primary btn-lg" onClick={this.commitChanges}>{this.state.uploadButton}</button>
-                <div className="last-commit">Last Commit: {this.state.lastCommit}</div>
+                <div className="last-commit">Your Last Upload: <p>{this.state.lastCommit}</p></div>
 
                 <h3>To get the latest version of the website commited by your team click below!</h3>
                 <p>Make sure that you get the latest version of the website before you start <b>each </b>

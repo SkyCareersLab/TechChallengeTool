@@ -46,3 +46,12 @@ body{
     display: inline-block;
     margin-left: 20px;
 }
+
+.last-commit span{
+    font-weight: bolder;
+    font-size: 14pt;
+}
+
+.last-commit p{
+    display:inline-block;
+}
