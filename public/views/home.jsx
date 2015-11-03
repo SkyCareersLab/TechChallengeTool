@@ -2,7 +2,8 @@
 var HomePage = React.createClass({
     getInitialState: function(){
         return {
-        team: null
+        team: null,
+        buttonText: 'Begin!'
       };
     },
     setTeam: function(){
@@ -14,6 +15,7 @@ var HomePage = React.createClass({
     downloadExercise: function() {
         var comp = this;
         if(this.state.team){
+            this.setState({buttonText : "Loading..."});
             var params = {"team" : this.state.team};
 
             $.ajax({
@@ -50,7 +52,7 @@ var HomePage = React.createClass({
                     <option value="D">Team D</option>
                 </select>
                 <br />
-                <button className="btn btn-info btn-lg pull-right" onClick={this.downloadExercise}>Begin!</button>
+                <button className="btn btn-info btn-lg pull-right" onClick={this.downloadExercise}>{this.state.buttonText}</button>
             </div>
         );
     }

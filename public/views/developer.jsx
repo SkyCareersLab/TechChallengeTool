@@ -3,7 +3,8 @@ var DeveloperPage = React.createClass({
     getInitialState: function () {
         return {
         alertMessage: null,
-        alertType: null
+        alertType: null,
+        lastCommit: ''
       };
     },
     navigateToPage: function(page,user){
@@ -49,6 +50,7 @@ var DeveloperPage = React.createClass({
                     console.log(response);
                     if(response == 'success'){
                         comp.setAlertBar("alert alert-success", "Your changes have been successfully committed! " + message);
+                        comp.setState({lastCommit : message});
                         comp.refs.message.getDOMNode().value = '';
                     } else {
                         comp.setAlertBar("alert alert-danger", "An error occurred! (Did you actually make any changes?)");
@@ -98,17 +100,18 @@ var DeveloperPage = React.createClass({
         return(
             <div>
                 {alertBar}
-    			<h2>All your work and changes will be saved under this code name: <b>{this.props.user}</b></h2>
+          			<h2>All your work and changes will be saved under this code name: <b>{this.props.user}</b></h2>
                 <br/>
-    			<button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#findCodeModal">Where's the code?</button>
+          			<button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#findCodeModal">Where's the code?</button>
                 <FindCodeModal />
 
-    			<h3>When you've finished a piece of work, and are ready to send it to the server:</h3>
-    			<p>Describe what you've done in a short message i.e. "Created a really cool new page"
-    			and press the button!</p>
-				<input type="text" className="form-control" ref="message" placeholder="Describe the changes you've made..." />
+          			<h3>When you've finished a piece of work, and are ready to send it to the server:</h3>
+          			<p>Describe what you've done in a short message i.e. "Created a really cool new page"
+          			and press the button!</p>
+        				<input type="text" className="form-control" ref="message" placeholder="Describe the changes you've made..." />
                 <br />
-				<button className="btn btn-primary btn-lg" onClick={this.commitChanges}>Add to the Codebase!</button>
+        				<button className="btn btn-primary btn-lg" onClick={this.commitChanges}>Upload changes!</button>
+                <div className="last-commit">Last Commit: {this.state.lastCommit}</div>
 
                 <h3>To get the latest version of the website commited by your team click below!</h3>
                 <p>Make sure that you get the latest version of the website before you start <b>each </b>
@@ -123,8 +126,7 @@ var DeveloperPage = React.createClass({
                 <br />
                 <br />
                 <button className="btn btn-danger btn-lg" onClick={this.navigateToPage.bind(null,'developer',null)}>Back</button>
-            </div>
-        );
+            </div>);
     }
 });
 
